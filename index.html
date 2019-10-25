@@ -1,0 +1,1325 @@
+<DOCTYPE html>
+	<html>	
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="icon" href="favicon2.ico" />
+		<title>ECO</title>
+	</head>
+	<body>
+		<div id="home_div">
+			<div id="up">
+				<strong><p id="titre1">ECO</p></strong>
+				<input  type="text" name="ville" id="text_box" placeholder="Enter your city name" maxlength="16">
+				<div id="fond_titre"></div>
+			</div>
+			<strong><p id="titre_boutton">START PLAYING</p></strong>
+			<div id="boutton1" onclick="start_party()">
+			</div>
+			<div id="down">
+				<strong><p id="texte_1">BUILD YOUR OWN ECO CITY</p></strong>
+				<div id="surlign"></div>
+				<div id="cadre_text">
+					<p id="texte_2"> Start today playing Eco and try build the most ecological city.</p>
+					<p id="texte_3"> Collect money, build structures ans upgrade your city to get </p>
+					<p id="texte_4"> the best score and learn about sustainable solution for the future.</p>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var mycity;
+			function start_party() {
+				if (document.getElementById("text_box").value.length > 0) {
+					mycity = document.getElementById("text_box").value;
+					document.getElementById("home_div").style.opacity = 0;
+					setTimeout(function() { 
+						document.getElementById("home_div").style.display = "none";
+						$.ajax({
+							url : 'GetScore.php',
+							type : 'GET',
+							dataType : 'html', 
+							data:{
+								city:mycity,
+								score:100
+							},
+       success : function(code_html, statut){ // code_html contient le HTML renvoyé
+       }
+   }); }, 1000);
+					
+				}
+			}
+		</script> 
+
+
+		<h1 id="titre">ECO</h1>
+		<div id="trait"></div>
+		<div id="menu">
+			<p id="shop"> <strong>SHOP</strong></p>
+			<div id="sur_shop"></div>
+			<div class="scrollbar" id="style-1">
+				<div class="icone_1" id="eoliennes_div" onclick="BuyWindTurbine()" onmouseover="document.getElementById('info_div4').style.opacity = 1;"
+				onmouseleave="document.getElementById('info_div4').style.opacity = 0;">
+				<div class="info_div" id="info_div4">
+					<label id="info_txt">EFFECTS :</label><br>
+					<label class="infos_txt2" id="infos_txt2">Start buildind some wind turbines around the city</label><br>
+					<label class="infos_txt3" id="infos_txt3">Earn 1 Eco point per second</label>
+					<div id="triangle"></div>
+				</div>
+				<p id="traffic"><strong>Wind Turbines</strong></p>
+				<p id="traffic_grise"><strong>Build Wind turbines to generate electricity</strong></p>
+				<div class="cadre_gold_shop" id="windturbine" >
+					<img id='img_coins_shop' src="Coin.png">
+					<p id="ex_coins_shop">100</p>
+				</div>
+			</div>
+			<div class="icone_1" id="agri-food_div" onclick="BuyAgriFood()" onmouseover="document.getElementById('info_div3').style.opacity = 1;"
+			onmouseleave="document.getElementById('info_div3').style.opacity = 0;">
+			<div class="info_div" id="info_div3">
+				<label id="info_txt">EFFECTS :</label><br>
+				<label class="infos_txt2" id="infos_txt2">All the population of the city start eating organic food only</label><br>
+				<label class="infos_txt3" id="infos_txt3">Earn 2 Eco points per second</label>
+				<div id="triangle"></div>
+			</div>
+			<p id="traffic"><strong>Agri-food Production</strong></p>
+			<p id="traffic_grise"><strong>Control food production and consuption</strong></p>
+			<div class="cadre_gold_shop" id="agri-food" >
+				<img id='img_coins_shop' src="Coin.png">
+				<p id="ex_coins_shop">200</p>
+			</div>
+		</div>
+		<div class="icone_1" id="ironworks_div" onclick="BuyIronworks()" onmouseover="document.getElementById('info_div2').style.opacity = 1;"
+		onmouseleave="document.getElementById('info_div2').style.opacity = 0;">
+		<div class="info_div" id="info_div2">
+			<label id="info_txt">EFFECTS :</label><br>
+			<label class="infos_txt2" id="infos_txt2">The ironworks production is sold, generating money despite of the negative ecological impact</label><br>
+			<label class="infos_txt3" id="infos_txt3">Earn 3 Coins per second and loose 3 Eco points per second</label>
+			<div id="triangle"></div>
+		</div>
+		<p id="traffic"><strong>Small Steel Factory</strong></p>
+		<p id="traffic_grise"><strong>Generate coins despite of ecological impact</strong></p>
+		<div class="cadre_gold_shop" id="ironworks_btn" >
+			<img id='img_coins_shop' src="Coin.png">
+			<p id="ex_coins_shop"> 250</p>
+		</div>
+	</div>
+	<div class="icone_1" id="biodiesel_div" onclick="BuyBiodiesel()" onmouseover="document.getElementById('info_div5').style.opacity = 1;"
+	onmouseleave="document.getElementById('info_div5').style.opacity = 0;">
+	<div class="info_div" id="info_div5">
+		<label id="info_txt">EFFECTS :</label><br>
+		<label class="infos_txt2" id="infos_txt2">The City lab start synthesizing and selling biodiesel for more ecological fuels</label><br>
+		<label class="infos_txt3" id="infos_txt3">Earn 2 Eco points and 1 Coins per second</label>
+		<div id="triangle"></div>
+	</div>
+	<p id="traffic"><strong>Synthesizing Biodiesel</strong></p>
+	<p id="traffic_grise"><strong>Use chemistry to produce eco-fuels</strong></p>
+	<div class="cadre_gold_shop" id="biodiesel" >
+		<img id='img_coins_shop' src="Coin.png">
+		<p id="ex_coins_shop">600</p>
+	</div>
+</div>
+<div class="icone_1" id="traffic_div" onclick="BuyTraffic()" onmouseover="document.getElementById('info_div1').style.opacity = 1;"
+onmouseleave="document.getElementById('info_div1').style.opacity = 0;" style="display: none;">
+<div class="info_div" id="info_div1">
+	<label id="info_txt">EFFECTS :</label><br>
+	<label class="infos_txt2" id="infos_txt2">The traffic is regulated, now 50% of all cars in your city are Hybrids</label><br>
+	<label class="infos_txt3" id="infos_txt3">Earn 1 Eco point per second</label>
+	<div id="triangle"></div>
+</div>
+<p id="traffic"><strong>Traffic regulation</strong></p>
+<p id="traffic_grise"><strong>control percentage of hybride and electrics cars</strong></p>
+<div class="cadre_gold_shop" id="traffic_btn" ">
+	<img id='img_coins_shop' src="Coin.png">
+	<p id="ex_coins_shop"> 1000</p>
+</div>
+</div>
+
+<div class="icone_1" id="solarpanel_div" onclick="BuySolarPanels()" onmouseover="document.getElementById('info_div6').style.opacity = 1;"
+onmouseleave="document.getElementById('info_div6').style.opacity = 0;" style="display: none;">
+<div class="info_div" id="info_div6">
+	<label id="info_txt">EFFECTS :</label><br>
+	<label class="infos_txt2" id="infos_txt2">Build solar panels on some house's roofs</label><br>
+	<label class="infos_txt3" id="infos_txt3">Earn 5 Eco point per second</label>
+	<div id="triangle"></div>
+</div>
+<p id="traffic"><strong>Solar panels</strong></p>
+<p id="traffic_grise"><strong>Add Solar panels to house's roofs</strong></p>
+<div class="cadre_gold_shop" id="traffic_btn" ">
+	<img id='img_coins_shop' src="Coin.png">
+	<p id="ex_coins_shop"> 200</p>
+</div>
+</div>
+
+<div class="icone_1" id="tidal_div" onclick="BuyTidalPlant()" onmouseover="document.getElementById('info_div7').style.opacity = 1;"
+onmouseleave="document.getElementById('info_div7').style.opacity = 0;" style="display: none;">
+<div class="info_div" id="info_div7">
+	<label id="info_txt">EFFECTS :</label><br>
+	<label class="infos_txt2" id="infos_txt2">Build a tidal plant for generating power</label><br>
+	<label class="infos_txt3" id="infos_txt3">Earn 15 Eco point per second</label>
+	<div id="triangle"></div>
+</div>
+<p id="traffic"><strong>Tidal Plant</strong></p>
+<p id="traffic_grise"><strong>Build a Tidal Plant generating power</strong></p>
+<div class="cadre_gold_shop" id="traffic_btn" ">
+	<img id='img_coins_shop' src="Coin.png">
+	<p id="ex_coins_shop"> 1500</p>
+</div>
+</div>
+
+<div class="icone_1" id="pesticides_div" onclick="BuyPesticides()" onmouseover="document.getElementById('info_div8').style.opacity = 1;"
+onmouseleave="document.getElementById('info_div8').style.opacity = 0;" style="display: none;">
+<div class="info_div" id="info_div8">
+	<label id="info_txt">EFFECTS :</label><br>
+	<label class="infos_txt2" id="infos_txt2">Less than 50% of food production is using pesticides</label><br>
+	<label class="infos_txt3" id="infos_txt3">Earn 45 Eco point per second</label>
+	<div id="triangle"></div>
+</div>
+<p id="traffic"><strong>Pesticide Control</strong></p>
+<p id="traffic_grise"><strong>Prevent the abuse of pesticides</strong></p>
+<div class="cadre_gold_shop" id="traffic_btn" ">
+	<img id='img_coins_shop' src="Coin.png">
+	<p id="ex_coins_shop"> 525</p>
+</div>
+</div>	
+
+<div class="icone_1" id="cimentplant_div" onclick="BuyCimentPlant()" onmouseover="document.getElementById('info_div9').style.opacity = 1;"
+onmouseleave="document.getElementById('info_div9').style.opacity = 0;" style="display: none;">
+<div class="info_div" id="info_div9">
+	<label id="info_txt">EFFECTS :</label><br>
+	<label class="infos_txt2" id="infos_txt2">Build a ciment plant factory generating lot of money but highly polluting</label><br>
+	<label class="infos_txt3" id="infos_txt3">Earn 200 Coins and Loosing 250 Eco Points per second</label>
+	<div id="triangle"></div>
+</div>
+<p id="traffic"><strong>Small Ciment Plant</strong></p>
+<p id="traffic_grise"><strong>Hight profit, huge enviroment impact</strong></p>
+<div class="cadre_gold_shop" id="traffic_btn" ">
+	<img id='img_coins_shop' src="Coin.png">
+	<p id="ex_coins_shop"> 400</p>
+</div>
+</div>
+
+<div id="new_struc_div">NEW STRUCTURES AVAILABLES AT NEXT LEVEL</div>
+</div>
+</div>
+</div>
+<div id="eco_point">
+	<img id="image_feuille" src="Logo.png">
+	<div id="eco_point_chiffre">100</div>
+</div>
+<p id="level"> Ecological Impact: Level 1</p>
+<div id="upgrade_level_btn" onclick="Upgrade()">
+	<label id="upgrade_level_txt">Upgrade Level</label>
+	<img id="logo_leef" src="Logo.png">
+	<label id="upgrade_level_value">200</label>
+</div>
+<img id='plante' src="Plant1.png">
+<div id="cadre_gold">
+	<img id='img_coins' src="Coin.png">
+	<div id="ex_coins"> 0</div>
+	<div onclick="AddMoney()" id="boutton">
+		<p id="int_bout_gold"><strong>MINE GOLD</strong></p>
+	</div>
+</div>
+
+<div id="onglet_1">
+	
+	
+	<p id="nom_onglet">Transport</p>
+	<div class="traffic_upgrade" id="traffic_upgrade1" style="display: none;">
+		<label class="traffic_upgrade_txt" id="traffic_upgrade1_txt">50% of road traffic consists of hybrid cars</label>
+		<div class="buy_upgrade_btn" id="buy_upgrade_btn1" onmouseover="document.getElementById('info_div100').style.opacity = 1;"
+		onmouseleave="document.getElementById('info_div100').style.opacity = 0;" onclick="UpgradeTraffic()">
+		<div class="info_upgrade" id="info_div100">
+			<label id="info_txt">EFFECTS :</label><br>
+			<label class="infos_txt2" id="transport1_txt">100% of road traffic consists of hybrid cars</label><br>
+			<label class="infos_txt3" id="transport2_txt">Earn 25 Eco points per second</label>
+			<div id="triangle"></div>
+		</div>
+		<label class="buy_upgrade_txt" id="transport1_upgrade_txt">UPGRADE</label>
+		<img class='buy_upgrade_icon' id="transport1_icon" src="Coin.png">
+		<label class="buy_upgrade_price" id="transport1_price">2500</label>
+	</div>
+</div>
+<div class="traffic_upgrade" id="traffic_upgrade2" style="display: none;">
+	<label class="traffic_upgrade_txt" id="traffic_upgrade2_txt">The City lab is synthesizing and selling biodiesel, an ecological fuel</label>
+	<div class="buy_upgrade_btn" id="buy_upgrade_btn2" onmouseover="document.getElementById('info_div101').style.opacity = 1;"
+	onmouseleave="document.getElementById('info_div101').style.opacity = 0;" onclick="UpgradeBiodiesel()">
+	<div class="info_upgrade" id="info_div101">
+		<label id="info_txt">EFFECTS :</label><br>
+		<label class="infos_txt2" id="transport3_txt">The City Lab synthesize a new fuel called Bioethanol even more ecological and expensive</label><br>
+		<label class="infos_txt3" id="transport4_txt">Earn 10 Eco points and 15 Coins per second</label>
+		<div id="triangle"></div>
+	</div>
+	<label class="buy_upgrade_txt" id="transport2_upgrade_txt">UPGRADE</label>
+	<img class='buy_upgrade_icon' id="transport2_icon" src="Coin.png">
+	<label class="buy_upgrade_price" id="transport2_price">2000</label>
+</div>
+</div>
+</div>
+<div id="onglet_2">
+	
+	
+	<p id="nom_onglet">Energy</p>
+	<div class="traffic_upgrade" id="energy_upgrade1" style="display: none;">
+		<label class="traffic_upgrade_txt" id="energy_upgrade1_txt">Some wind turbines are generating electricity around the city</label>
+		<div class="buy_upgrade_btn" id="buy_upgrade_btn3" onmouseover="document.getElementById('info_div102').style.opacity = 1;"
+		onmouseleave="document.getElementById('info_div102').style.opacity = 0;" onclick="UpgradeWindTurbine()">
+		<div class="info_upgrade" id="info_div102">
+			<label style="color:#30af24" id="info_txt">EFFECTS :</label><br>
+			<label class="infos_txt2" id="energy1_txt">Create a wind park</label><br>
+			<label class="infos_txt3" style="color:#30af24" id="energy2_txt">Earn 6 Eco points per second</label>
+			<div id="triangle"></div>
+		</div>
+		<label class="buy_upgrade_txt" id="energy1_upgrade_txt">UPGRADE</label>
+		<img class='buy_upgrade_icon' id="energy1_icon" src="Coin.png">
+		<label class="buy_upgrade_price" id="energy1_price">650</label>
+	</div>
+</div>
+<div class="traffic_upgrade" id="energy_upgrade2" style="display: none;">
+	<label class="traffic_upgrade_txt" id="energy_upgrade2_txt">The tidal plant is generating electricity using the power of water</label>
+	<div class="buy_upgrade_btn" id="buy_upgrade_btn4" style="opacity: 0.5;pointer-events: none;">
+		<label class="buy_upgrade_txt">MAXIMUM LEVEL</label>
+	</div>
+</div>
+<div class="traffic_upgrade" id="energy_upgrade3" style="display: none;">
+	<label class="traffic_upgrade_txt" id="energy_upgrade3_txt">Some solar panels are installed on house's roofs, generating power</label>
+	<div class="buy_upgrade_btn" id="buy_upgrade_btn5" onmouseover="document.getElementById('info_div103').style.opacity = 1;"
+	onmouseleave="document.getElementById('info_div103').style.opacity = 0;"onclick="UpgradeSolarPanels()">
+	<div class="info_upgrade" id="info_div103">
+		<label style="color:#30af24" id="info_txt">EFFECTS :</label><br>
+		<label class="infos_txt2" id="energy3_txt">Create a photovoltaic farm</label><br>
+		<label class="infos_txt3" style="color:#30af24" id="energy4_txt">Earn 16 Eco points per second</label>
+		<div id="triangle"></div>
+	</div>
+	<label class="buy_upgrade_txt" id="energy2_upgrade_txt">UPGRADE</label>
+	<img class='buy_upgrade_icon' id="energy2_icon" src="Coin.png">
+	<label class="buy_upgrade_price" id="energy2_price">2000</label>
+</div>
+</div>
+</div>
+<div id="onglet_3">
+	
+	
+	<p id="nom_onglet">Alimentation</p>
+	<div class="traffic_upgrade" id="alimentation_upgrade1" style="display: none;">
+		<label class="traffic_upgrade_txt" id="alimentation_upgrade1_txt">All the population of the city is eating organic food only</label>
+		<div class="buy_upgrade_btn" id="buy_upgrade_btn6" onmouseover="document.getElementById('info_div104').style.opacity = 1;"
+		onmouseleave="document.getElementById('info_div104').style.opacity = 0;" onclick="UpgradeAgriFood()">
+		<div class="info_upgrade" id="info_div104">
+			<label style="color:#fb5a52" id="info_txt">EFFECTS :</label><br>
+			<label class="infos_txt2" id="alimentation1_txt">All the population of the city is eating vegetarian food</label><br>
+			<label class="infos_txt3" style="color:#fb5a52" id="alimentation2_txt">Earn 5 Eco points per second</label>
+			<div id="triangle"></div>
+		</div>
+		<label class="buy_upgrade_txt" id="alimentation1_upgrade_txt">UPGRADE</label>
+		<img class='buy_upgrade_icon' id="alimentation1_icon" src="Coin.png">
+		<label class="buy_upgrade_price" id="alimentation1_price">550</label>
+	</div>
+</div>
+<div class="traffic_upgrade" id="alimentation_upgrade2" style="display: none;">
+	<label class="traffic_upgrade_txt" id="alimentation_upgrade2_txt">Less than 50% of food is produced without any pesticide</label>
+	<div class="buy_upgrade_btn" id="buy_upgrade_btn7" onmouseover="document.getElementById('info_div105').style.opacity = 1;"
+	onmouseleave="document.getElementById('info_div105').style.opacity = 0;" onclick="UpgradePesticides()">
+	<div class="info_upgrade" id="info_div105">
+		<label style="color:#fb5a52" id="info_txt">EFFECTS :</label><br>
+		<label class="infos_txt2" id="alimentation3_txt">Less than 50% of food is produced without any pesticide</label><br>
+		<label class="infos_txt3" style="color:#fb5a52" id="alimentation4_txt">Earn 25 Eco points per second</label>
+		<div id="triangle"></div>
+	</div>
+	<label class="buy_upgrade_txt" id="alimentation2_upgrade_txt">UPGRADE</label>
+	<img class='buy_upgrade_icon' id="alimentation2_icon" src="Coin.png">
+	<label class="buy_upgrade_price" id="alimentation2_price">2500</label>
+</div>
+</div>
+</div>
+<div id="onglet_4">
+	
+	
+	<p id="nom_onglet">Factories</p>
+	<div class="traffic_upgrade" id="factories_upgrade1" style="display: none;">
+		<label class="traffic_upgrade_txt" id="factories_upgrade1_txt">Small steel factory, generating money but polluting the city</label>
+		<div class="buy_upgrade_btn" id="buy_upgrade_btn8" onmouseover="document.getElementById('info_div106').style.opacity = 1;"
+		onmouseleave="document.getElementById('info_div106').style.opacity = 0;"onclick="UpgradeIronworks()">
+		<div class="info_upgrade" id="info_div106">
+			<label id="info_txt">EFFECTS :</label><br>
+			<label class="infos_txt2" id="factory1_txt">Building a Medium Steel Factory, generating money despite of the environment</label><br>
+			<label class="infos_txt3" id="factory2_txt">Earn 7 Coins and Loosing 10 Eco Points per second</label>
+			<div id="triangle"></div>
+		</div>
+		<label class="buy_upgrade_txt" id="factory1_upgrade_txt">UPGRADE</label>
+		<img class='buy_upgrade_icon' id="factory1_icon" src="Coin.png">
+		<label class="buy_upgrade_price" id="factory1_price">750</label>
+	</div>
+</div>
+<div class="traffic_upgrade" id="factories_upgrade2" style="display: none;">
+	<label class="traffic_upgrade_txt" id="factories_upgrade2_txt">Small cement factory : generating money but polluting the city</label>
+	<div class="buy_upgrade_btn" id="buy_upgrade_btn9" onmouseover="document.getElementById('info_div107').style.opacity = 1;"
+	onmouseleave="document.getElementById('info_div107').style.opacity = 0;" onclick="UpgradeCimentPlant()">
+	<div class="info_upgrade" id="info_div107">
+		<label id="info_txt">EFFECTS :</label><br>
+		<label class="infos_txt2" id="factory3_txt">Building a Medium Cement Factory, generating money despite of the environment</label><br>
+		<label class="infos_txt3" id="factory4_txt">Earn 30 Coins and Loosing 35 Eco Points per second</label>
+		<div id="triangle"></div>
+	</div>
+	<label class="buy_upgrade_txt" id="factory2_upgrade_txt">UPGRADE</label>
+	<img class='buy_upgrade_icon' id="factory2_icon" src="Coin.png">
+	<label class="buy_upgrade_price" id="factory2_price">2500</label>
+</div>
+</div>
+</div>
+<div id="onglet_5">
+	<p id="nom_onglet">Mine</p>
+	<div class="traffic_upgrade" id="mine_upgrade1">
+		<label class="traffic_upgrade_txt" id="mines_upgrade1_txt">Mining Gold</label>
+		<div class="buy_upgrade_btn" id="buy_upgrade_btn10" onmouseover="document.getElementById('info_div108').style.opacity = 1;"
+		onmouseleave="document.getElementById('info_div108').style.opacity = 0;"onclick="UpgradeMine()">
+		<div class="info_upgrade" id="info_div108">
+			<label id="info_txt">EFFECTS :</label><br>
+			<label class="infos_txt2" id="mine1_txt">Mining Ruby</label><br>
+			<label class="infos_txt3" id="mine2_txt">Earn 6 Coins per click</label>
+			<div id="triangle"></div>
+		</div>
+		<label class="buy_upgrade_txt" id="mine1_upgrade_txt">UPGRADE</label>
+		<img class='buy_upgrade_icon' id="mine1_icon" src="Coin.png">
+		<label class="buy_upgrade_price" id="mine1_price">200</label>
+	</div>
+</div>
+</div>
+
+<div id="score_panel">
+	<label id="ScoreTitle">Top cities :</label>
+	<div id="space"></div>
+	<div id="player_score">
+		<label id="j1_city"></label>
+		<label id="j1_score"></label>
+	</div>
+	<div id="player_score">
+		<label id="j2_city"></label>
+		<label id="j2_score"></label>
+	</div>
+	<div id="player_score">
+		<label id="j3_city"></label>
+		<label id="j3_score"></label>
+	</div>
+	<div id="player_score">
+		<label id="j4_city"></label>
+		<label id="j4_score"></label>
+	</div>
+	<div id="player_score">
+		<label id="j5_city"></label>
+		<label id="j5_score"></label>
+	</div>
+	<div id="player_score">
+		<label id="j6_city"></label>
+		<label id="j6_score"></label>
+	</div>
+	<div id="player_score">
+		<label id="j7_city"></label>
+		<label id="j7_score"></label>
+	</div>
+	<div id="player_score">
+		<label id="j8_city"></label>
+		<label id="j8_score"></label>
+	</div>
+	<div id="player_score">
+		<label id="j9_city"></label>
+		<label id="j9_score"></label>
+	</div>
+	<div id="player_score">
+		<label id="j10_city"></label>
+		<label id="j10_score"></label>
+	</div>
+</div>
+<!-- <button id="upgrade_btn" onclick="Upgrade()">upgrade level</button> UPGRADE ECO LEVEL BUTTON -->
+
+
+
+<div class="mySlides">
+	<strong><p id="titre_info">Le saviez vous:</p></strong>
+	<div id="underline"></div>
+	<strong><p id="texte">L'agriculture d’élevage produirait environ révèle qu'ils émettent 99 % de gaz à effet de serre en moins par rapport aux bovins </p></strong>
+</div>
+<div class="mySlides">
+	<strong><p id="titre_info">Le saviez vous:</p></strong>
+	<div id="underline"></div>
+	<strong><p id="texte">Les algues sont capables de fixer, comme le font les plantes terrestres, le CO2 grâce à l’enzyme Rubisco </p></strong>
+</div> 
+<div class="mySlides">
+	<strong><p id="titre_info">Le saviez vous:</p></strong>
+	<div id="underline"></div>
+	<strong><p id="texte">La sidérurgie utilise 20% de l’énergie consommée dans l’industrie manufacturière française, avec 9,5 millions de tonnes équivalent</p></strong>
+</div> 
+<div class="mySlides">
+	<strong><p id="titre_info">Le saviez vous:</p></strong>
+	<div id="underline"></div>
+	<strong><p id="texte">L'exploitation de l'énergie marémotrice est ancienne. Les premiers moulins à marée dateraient de l'Antiquité sur la rivière Fleet dans la Londres romaine</p></strong>
+</div> 
+<div class="mySlides">
+	<strong><p id="titre_info">Le saviez vous:</p></strong>
+	<div id="underline"></div>
+	<strong><p id="texte">Le rendement électrique de panneaux photovoltaïques diminue avec le temps (20% de moins au bout de 20 ans).</p></strong>
+</div> 
+<button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+<button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button>
+<script type="text/javascript">
+	var slideIndex = 1;
+	showDivs(slideIndex);
+	function plusDivs(n) {
+		showDivs(slideIndex += n);
+	}
+	function showDivs(n) {
+		var i;
+		var x = document.getElementsByClassName("mySlides");
+		if (n > x.length) {slideIndex = 1} 
+			if (n < 1) {slideIndex = x.length} ;
+		for (i = 0; i < x.length; i++) {
+			x[i].style.display = "none"; 
+		}
+		x[slideIndex-1].style.display = "block"; 
+	}</script>
+
+
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="boxfit/dist/jquery.boxfit.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+	$('#eco_point_chiffre').boxfit();
+	$('#ex_coins').boxfit();
+	    // Nos variables de départ :
+
+	    var EP = 100;
+	    var Money = 0;
+	    var Ecological_level = 1;
+
+	    var MoneyPerSec = 0;
+	    var EPPerSec = 0;
+
+	    var UpgradeLevelEP = [0, 200, 400, 600, 800, 1000];
+
+	    //Structures levels :
+	    var trafficLevel = 0;
+	    var biodieselLevel = 0;
+	    var WindturbineLevel = 0;
+	    var TidalplantLevel = 0;
+	    var SolarpanelsLevel = 0;
+	    var agrifoodLevel = 0;
+	    var pesticideLevel = 0;
+	    var ironworksLevel = 0;
+	    var cimentplantLevel = 0;
+	    var mineLevel = 1;
+
+	    var MoneyPerClick=2;
+
+		// On desactive tous nos boutons : 
+		//document.getElementById("upgrade_btn").disabled = true;
+		//document.getElementById("ironworks_btn").disabled = true;
+
+		// On appelle CheckUpgrade pour desactiver les boutons dès le début
+		CheckUpgrade()
+
+        //Toutes les secondes on appelle les fonctions suivantes :
+        window.setInterval(function(){
+			UpdateEP();     // On met à jour le nombre d'Eco Points
+			UpdateMoney();  // On met à jour le nombre de Money
+			CheckUpgrade(); // On active et desactives les boutons en fonction de la money du joueur
+			$('#eco_point_chiffre').boxfit();
+			$('#ex_coins').boxfit();
+		}, 1000);
+
+		// Fonction : on ajoute de l'argent en cliquant sur le bouton de Minage :
+		function AddMoney () {
+			Money += MoneyPerClick;
+			document.getElementById("ex_coins").innerHTML=Money;
+			CheckUpgrade();
+		}
+
+		// Fonction de mise à jour du nombre d'Eco Points :
+		function UpdateEP() {
+			EP += EPPerSec;
+			document.getElementById("eco_point_chiffre").innerHTML = EP;
+		}
+
+		// Fonction de mise à jour du nombre de Money :
+		function UpdateMoney() {
+			Money += MoneyPerSec;
+			document.getElementById("ex_coins").innerHTML = Money;
+		}
+
+		// On active et desactive les boutons en fonction des ressources du joueur :
+		function CheckUpgrade() {
+			$.ajax({
+				url : 'UpdateScore.php',
+				type : 'GET',
+				dataType : 'html', 
+				data:{
+					city:mycity,
+					score:EP
+				},
+				success : function(code_html, statut){
+					var results = code_html;
+					var array = results.split(";");
+
+					document.getElementById("j1_city").innerHTML = array[0];
+					document.getElementById("j1_score").innerHTML = array[1];
+
+					document.getElementById("j2_city").innerHTML = array[2];
+					document.getElementById("j2_score").innerHTML = array[3];
+
+					document.getElementById("j3_city").innerHTML = array[4];
+					document.getElementById("j3_score").innerHTML = array[5];
+
+					document.getElementById("j4_city").innerHTML = array[6];
+					document.getElementById("j4_score").innerHTML = array[7];
+
+					document.getElementById("j5_city").innerHTML = array[8];
+					document.getElementById("j5_score").innerHTML = array[9];
+
+					document.getElementById("j6_city").innerHTML = array[10];
+					document.getElementById("j6_score").innerHTML = array[11];
+
+					document.getElementById("j7_city").innerHTML = array[12];
+					document.getElementById("j7_score").innerHTML = array[13];
+
+					document.getElementById("j8_city").innerHTML = array[14];
+					document.getElementById("j8_score").innerHTML = array[15];
+
+					document.getElementById("j9_city").innerHTML = array[16];
+					document.getElementById("j9_score").innerHTML = array[17];
+
+					document.getElementById("j10_city").innerHTML = array[18];
+					document.getElementById("j10_score").innerHTML = array[19];
+				}
+			});
+			$('#eco_point_chiffre').boxfit();
+			$('#ex_coins').boxfit(); 
+
+			// Level 1 :
+			if (Money >=100){
+				document.getElementById("eoliennes_div").style.opacity = 1;
+				document.getElementById("eoliennes_div").style.pointerEvents = "auto";
+			}
+			else {
+				document.getElementById("eoliennes_div").style.opacity = 0.5;
+				document.getElementById("eoliennes_div").style.pointerEvents = "none";
+			}
+
+			if (Money >=250){
+				document.getElementById("ironworks_div").style.opacity = 1;
+				document.getElementById("ironworks_div").style.pointerEvents = "auto";
+			}
+			else {
+				document.getElementById("ironworks_div").style.opacity = 0.5;
+				document.getElementById("ironworks_div").style.pointerEvents = "none";
+			}
+
+			if (Money >=200){
+				document.getElementById("agri-food_div").style.opacity = 1;
+				document.getElementById("agri-food_div").style.pointerEvents = "auto";
+			}
+			else {
+				document.getElementById("agri-food_div").style.opacity = 0.5;
+				document.getElementById("agri-food_div").style.pointerEvents = "none";
+			}
+
+			if (Money >=600){
+				document.getElementById("biodiesel_div").style.opacity = 1;
+				document.getElementById("biodiesel_div").style.pointerEvents = "auto";
+			}
+			else {
+				document.getElementById("biodiesel_div").style.opacity = 0.5;
+				document.getElementById("biodiesel_div").style.pointerEvents = "none";
+			}
+
+			// Level 2 :
+			if (Ecological_level > 1) {
+				if (trafficLevel == 0) {
+				    // On fait apparaitre les boutons dans le shop :
+				    document.getElementById("traffic_div").style.display = "block";
+				}
+				if (SolarpanelsLevel == 0) {
+					document.getElementById("solarpanel_div").style.display = "block";
+				}
+
+				if (Money >=700){
+					document.getElementById("solarpanel_div").style.opacity = 1;
+					document.getElementById("solarpanel_div").style.pointerEvents = "auto";
+
+				}
+				else {
+					document.getElementById("solarpanel_div").style.opacity = 0.5;
+					document.getElementById("solarpanel_div").style.pointerEvents = "none";
+				}
+
+				if (Money >=1000){
+					document.getElementById("traffic_div").style.opacity = 1;
+					document.getElementById("traffic_div").style.pointerEvents = "auto";
+
+				}
+				else {
+					document.getElementById("traffic_div").style.opacity = 0.5;
+					document.getElementById("traffic_div").style.pointerEvents = "none";
+				}
+			}
+
+			if (Ecological_level > 2) {
+				document.getElementById("new_struc_div").style.display = "none";
+				if (TidalplantLevel == 0) {
+				    // On fait apparaitre les boutons dans le shop :
+				    document.getElementById("tidal_div").style.display = "block";
+				}
+				if (pesticideLevel == 0) {
+					document.getElementById("pesticides_div").style.display = "block";
+				}
+
+				if (cimentplantLevel == 0) {
+					document.getElementById("cimentplant_div").style.display = "block";
+				}
+
+				if (Money >=1300){
+					document.getElementById("cimentplant_div").style.opacity = 1;
+					document.getElementById("cimentplant_div").style.pointerEvents = "auto";
+
+				}
+				else {
+					document.getElementById("cimentplant_div").style.opacity = 0.5;
+					document.getElementById("cimentplant_div").style.pointerEvents = "none";
+				}
+
+				if (Money >=1200){
+					document.getElementById("pesticides_div").style.opacity = 1;
+					document.getElementById("pesticides_div").style.pointerEvents = "auto";
+
+				}
+				else {
+					document.getElementById("pesticides_div").style.opacity = 0.5;
+					document.getElementById("pesticides_div").style.pointerEvents = "none";
+				}
+
+				if (Money >=1500){
+					document.getElementById("tidal_div").style.opacity = 1;
+					document.getElementById("tidal_div").style.pointerEvents = "auto";
+
+				}
+				else {
+					document.getElementById("tidal_div").style.opacity = 0.5;
+					document.getElementById("tidal_div").style.pointerEvents = "none";
+				}
+			} 
+
+			// Upgrades :
+
+			///////////////////////////////
+			///////// LEVEL 1 : ///////////
+			///////////////////////////////
+			if (Money >=2500 && trafficLevel == 1) {
+				document.getElementById("buy_upgrade_btn1").style.opacity = 1;
+				document.getElementById("buy_upgrade_btn1").style.pointerEvents = "auto";
+			}
+			else if (trafficLevel == 1) {
+				document.getElementById("buy_upgrade_btn1").style.opacity = 0.5;
+				document.getElementById("buy_upgrade_btn1").style.pointerEvents = "none";
+			}
+
+			if (Money >=2000 && biodieselLevel == 1) {
+				document.getElementById("buy_upgrade_btn2").style.opacity = 1;
+				document.getElementById("buy_upgrade_btn2").style.pointerEvents = "auto";
+			}
+			else if (biodieselLevel == 1) {
+				document.getElementById("buy_upgrade_btn2").style.opacity = 0.5;
+				document.getElementById("buy_upgrade_btn2").style.pointerEvents = "none";
+			}
+
+			if (Money >=650 && WindturbineLevel == 1) {
+				document.getElementById("buy_upgrade_btn3").style.opacity = 1;
+				document.getElementById("buy_upgrade_btn3").style.pointerEvents = "auto";
+			}
+			else if (WindturbineLevel == 1) {
+				document.getElementById("buy_upgrade_btn3").style.opacity = 0.5;
+				document.getElementById("buy_upgrade_btn3").style.pointerEvents = "none";
+			}
+
+			if (Money >=2000 && SolarpanelsLevel == 1) {
+				document.getElementById("buy_upgrade_btn5").style.opacity = 1;
+				document.getElementById("buy_upgrade_btn5").style.pointerEvents = "auto";
+			}
+			else if (SolarpanelsLevel == 1) {
+				document.getElementById("buy_upgrade_btn5").style.opacity = 0.5;
+				document.getElementById("buy_upgrade_btn5").style.pointerEvents = "none";
+			}
+
+			if (Money >=550 && agrifoodLevel == 1) {
+				document.getElementById("buy_upgrade_btn6").style.opacity = 1;
+				document.getElementById("buy_upgrade_btn6").style.pointerEvents = "auto";
+			}
+			else if (agrifoodLevel == 1) {
+				document.getElementById("buy_upgrade_btn6").style.opacity = 0.5;
+				document.getElementById("buy_upgrade_btn6").style.pointerEvents = "none";
+			}
+
+			if (Money >=2500 && pesticideLevel == 1) {
+				document.getElementById("buy_upgrade_btn7").style.opacity = 1;
+				document.getElementById("buy_upgrade_btn7").style.pointerEvents = "auto";
+			}
+			else if (pesticideLevel == 1) {
+				document.getElementById("buy_upgrade_btn7").style.opacity = 0.5;
+				document.getElementById("buy_upgrade_btn7").style.pointerEvents = "none";
+			}
+
+			if (Money >=750 && ironworksLevel == 1) {
+				document.getElementById("buy_upgrade_btn8").style.opacity = 1;
+				document.getElementById("buy_upgrade_btn8").style.pointerEvents = "auto";
+			}
+			else if (ironworksLevel == 1) {
+				document.getElementById("buy_upgrade_btn8").style.opacity = 0.5;
+				document.getElementById("buy_upgrade_btn8").style.pointerEvents = "none";
+			}
+
+			if (Money >=2500 && cimentplantLevel == 1) {
+				document.getElementById("buy_upgrade_btn9").style.opacity = 1;
+				document.getElementById("buy_upgrade_btn9").style.pointerEvents = "auto";
+			}
+			else if (cimentplantLevel == 1) {
+				document.getElementById("buy_upgrade_btn9").style.opacity = 0.5;
+				document.getElementById("buy_upgrade_btn9").style.pointerEvents = "none";
+			}
+
+			///////////////////////////////
+			///////// LEVEL 2 : ///////////
+			///////////////////////////////
+			if (Money >=6000 && trafficLevel == 2) {
+				document.getElementById("buy_upgrade_btn1").style.opacity = 1;
+				document.getElementById("buy_upgrade_btn1").style.pointerEvents = "auto";
+			}
+			else if (trafficLevel == 2) {
+				document.getElementById("buy_upgrade_btn1").style.opacity = 0.5;
+				document.getElementById("buy_upgrade_btn1").style.pointerEvents = "none";
+			}
+
+			if (Money >=7000 && biodieselLevel == 2) {
+				document.getElementById("buy_upgrade_btn2").style.opacity = 1;
+				document.getElementById("buy_upgrade_btn2").style.pointerEvents = "auto";
+			}
+			else if (biodieselLevel == 2) {
+				document.getElementById("buy_upgrade_btn2").style.opacity = 0.5;
+				document.getElementById("buy_upgrade_btn2").style.pointerEvents = "none";
+			}
+
+			if (Money >=1500 && WindturbineLevel == 2) {
+				document.getElementById("buy_upgrade_btn3").style.opacity = 1;
+				document.getElementById("buy_upgrade_btn3").style.pointerEvents = "auto";
+			}
+			else if (WindturbineLevel == 2) {
+				document.getElementById("buy_upgrade_btn3").style.opacity = 0.5;
+				document.getElementById("buy_upgrade_btn3").style.pointerEvents = "none";
+			}
+
+			if (Money >=5000 && SolarpanelsLevel == 2) {
+				document.getElementById("buy_upgrade_btn5").style.opacity = 1;
+				document.getElementById("buy_upgrade_btn5").style.pointerEvents = "auto";
+			}
+			else if (SolarpanelsLevel == 2) {
+				document.getElementById("buy_upgrade_btn5").style.opacity = 0.5;
+				document.getElementById("buy_upgrade_btn5").style.pointerEvents = "none";
+			}
+
+			if (Money >=2500 && agrifoodLevel == 2) {
+				document.getElementById("buy_upgrade_btn6").style.opacity = 1;
+				document.getElementById("buy_upgrade_btn6").style.pointerEvents = "auto";
+			}
+			else if (agrifoodLevel == 2) {
+				document.getElementById("buy_upgrade_btn6").style.opacity = 0.5;
+				document.getElementById("buy_upgrade_btn6").style.pointerEvents = "none";
+			}
+
+			if (Money >=5500 && pesticideLevel == 2) {
+				document.getElementById("buy_upgrade_btn7").style.opacity = 1;
+				document.getElementById("buy_upgrade_btn7").style.pointerEvents = "auto";
+			}
+			else if (pesticideLevel == 2) {
+				document.getElementById("buy_upgrade_btn7").style.opacity = 0.5;
+				document.getElementById("buy_upgrade_btn7").style.pointerEvents = "none";
+			}
+
+			if (Money >=2000 && ironworksLevel == 2) {
+				document.getElementById("buy_upgrade_btn8").style.opacity = 1;
+				document.getElementById("buy_upgrade_btn8").style.pointerEvents = "auto";
+			}
+			else if (ironworksLevel == 2) {
+				document.getElementById("buy_upgrade_btn8").style.opacity = 0.5;
+				document.getElementById("buy_upgrade_btn8").style.pointerEvents = "none";
+			}
+
+			if (Money >=5000 && cimentplantLevel == 2) {
+				document.getElementById("buy_upgrade_btn9").style.opacity = 1;
+				document.getElementById("buy_upgrade_btn9").style.pointerEvents = "auto";
+			}
+			else if (cimentplantLevel == 2) {
+				document.getElementById("buy_upgrade_btn9").style.opacity = 0.5;
+				document.getElementById("buy_upgrade_btn9").style.pointerEvents = "none";
+			}
+
+			/* UPGRADE LEVEL */
+
+			if (EP >= UpgradeLevelEP[Ecological_level]) {
+				document.getElementById("upgrade_level_btn").style.opacity = 1;
+				document.getElementById("upgrade_level_btn").style.pointerEvents = "auto";
+			}
+			else {
+				document.getElementById("upgrade_level_btn").style.opacity = 0.5;
+				document.getElementById("upgrade_level_btn").style.pointerEvents = "none";
+			}
+
+			/*Mine levels */
+
+			if (Money >= 200 && mineLevel == 1) {
+				document.getElementById("buy_upgrade_btn10").style.opacity = 1;
+				document.getElementById("buy_upgrade_btn10").style.pointerEvents = "auto";
+			}
+			else if (mineLevel == 1) {
+				document.getElementById("buy_upgrade_btn10").style.opacity = 0.5;
+				document.getElementById("buy_upgrade_btn10").style.pointerEvents = "none";
+			}
+
+			if (Money >= 750 && mineLevel == 2) {
+				document.getElementById("buy_upgrade_btn10").style.opacity = 1;
+				document.getElementById("buy_upgrade_btn10").style.pointerEvents = "auto";
+			}
+			else if (mineLevel == 2) {
+				document.getElementById("buy_upgrade_btn10").style.opacity = 0.5;
+				document.getElementById("buy_upgrade_btn10").style.pointerEvents = "none";
+			}
+
+			if (Money >= 2750 && mineLevel == 3) {
+				document.getElementById("buy_upgrade_btn10").style.opacity = 1;
+				document.getElementById("buy_upgrade_btn10").style.pointerEvents = "auto";
+			}
+			else if (mineLevel == 3) {
+				document.getElementById("buy_upgrade_btn10").style.opacity = 0.5;
+				document.getElementById("buy_upgrade_btn10").style.pointerEvents = "none";
+			}
+
+		}
+
+		function Upgrade() {
+			// Evolution du niveau d'impact écologique
+			if (EP >= UpgradeLevelEP[Ecological_level]) {
+				EP -= UpgradeLevelEP[Ecological_level];
+				Ecological_level += 1;
+				document.getElementById("plante").src = "Plant"+Ecological_level+".png";
+				document.getElementById("level").innerHTML = "Ecological Impact : Level "+Ecological_level;
+				document.getElementById("upgrade_level_value").innerHTML = UpgradeLevelEP[Ecological_level];
+				document.getElementById("eco_point_chiffre").innerHTML = EP;
+				if (Ecological_level == 5) {
+					document.getElementById("upgrade_level_btn").style.display = "none";
+				}
+				CheckUpgrade();
+			}
+		}
+
+		function BuyWindTurbine() {
+			if (Money >= 100){
+				Money -= 100;
+				WindturbineLevel = 1;
+				document.getElementById("eoliennes_div").style.display = "none";
+				document.getElementById("ex_coins").innerHTML=Money;
+				EPPerSec += 1;
+				CheckUpgrade();
+				document.getElementById("energy_upgrade1").style.display = "block";
+
+			}
+		}
+
+		function BuyAgriFood() {
+			if (Money >= 200){
+				Money -= 200;
+				agrifoodLevel = 1;
+				document.getElementById("agri-food_div").style.display = "none";
+				document.getElementById("ex_coins").innerHTML=Money;
+				EPPerSec += 2;
+				CheckUpgrade();
+				document.getElementById("alimentation_upgrade1").style.display = "block";
+
+			}
+		}
+
+		function BuyIronworks() {
+			if (Money >= 250){
+				Money -= 250;
+				ironworksLevel = 1;
+				document.getElementById("ironworks_div").style.display = "none";
+				document.getElementById("ex_coins").innerHTML=Money;
+				EPPerSec -= 3;
+				MoneyPerSec += 3;
+				CheckUpgrade();
+				document.getElementById("factories_upgrade1").style.display = "block";
+			}
+		}
+
+		function BuyBiodiesel() {
+			if (Money >= 600){
+				Money -= 600;
+				biodieselLevel = 1;
+				document.getElementById("biodiesel_div").style.display = "none";
+				document.getElementById("ex_coins").innerHTML=Money;
+				EPPerSec += 2;
+				MoneyPerSec += 1;
+				CheckUpgrade();
+				document.getElementById("traffic_upgrade2").style.display = "block";
+			}
+		}
+
+		function BuyTraffic() {
+			if (Money >= 250){
+				Money -= 250;
+				trafficLevel = 1;
+				document.getElementById("traffic_div").style.display = "none";
+				document.getElementById("ex_coins").innerHTML=Money;
+				EPPerSec += 6;
+				CheckUpgrade();
+
+				document.getElementById("traffic_upgrade1").style.display = "block";
+			}
+			
+		}
+
+		function BuySolarPanels() {
+			if (Money >= 200){
+				Money -= 200;
+				SolarpanelsLevel = 1;
+				document.getElementById("solarpanel_div").style.display = "none";
+				document.getElementById("ex_coins").innerHTML=Money;
+				EPPerSec += 5;
+				CheckUpgrade();
+
+				document.getElementById("energy_upgrade3").style.display = "block";
+			}
+			
+		}
+
+		function BuyTidalPlant() {
+			if (Money >= 1500){
+				Money -= 1500;
+				TidalplantLevel = 1;
+				document.getElementById("tidal_div").style.display = "none";
+				document.getElementById("ex_coins").innerHTML=Money;
+				EPPerSec += 15;
+				CheckUpgrade();
+
+				document.getElementById("energy_upgrade2").style.display = "block";
+			}
+			
+		}
+
+		function BuyPesticides() {
+			if (Money >= 525){
+				Money -= 525;
+				pesticideLevel = 1;
+				document.getElementById("pesticides_div").style.display = "none";
+				document.getElementById("ex_coins").innerHTML=Money;
+				EPPerSec += 45;
+				CheckUpgrade();
+
+				document.getElementById("alimentation_upgrade2").style.display = "block";
+			}
+			
+		}
+
+		function BuyCimentPlant() {
+			if (Money >= 400){
+				Money -= 400;
+				cimentplantLevel = 1;
+				document.getElementById("cimentplant_div").style.display = "none";
+				document.getElementById("ex_coins").innerHTML=Money;
+				MoneyPerSec += 200;
+				EPPerSec -= 250;
+				CheckUpgrade();
+
+				document.getElementById("factories_upgrade2").style.display = "block";
+			}
+			
+		}
+
+		/* EVOLVE STRUCTURES */
+
+		/*-------------------------------------------------------------------------------------*/
+
+		/* EVOLVE STRUCTURES */
+
+		function UpgradeWindTurbine() {
+			if (Money >= 650 && WindturbineLevel == 1){
+				Money -= 650;
+				WindturbineLevel = 2;
+				document.getElementById("ex_coins").innerHTML=Money;
+				EPPerSec += 6;
+				document.getElementById("energy_upgrade1_txt").innerHTML = "A wind park is generating green electricity for the city";
+				document.getElementById("energy1_txt").innerHTML = "Building a Wind Farm, generating even more power";
+				document.getElementById("energy2_txt").innerHTML = "Earn 17 Eco Points per second";
+				document.getElementById("energy1_price").innerHTML = "1500";
+				CheckUpgrade();
+			}
+			else if (Money >= 1500 && WindturbineLevel == 2){
+				Money -= 1500;
+				WindturbineLevel = 3;
+				document.getElementById("ex_coins").innerHTML=Money;
+				EPPerSec += 11;
+				document.getElementById("energy_upgrade1_txt").innerHTML = "A wind farm is generating green electricity for the city";
+				document.getElementById("energy1_price").style.display = "none";
+				document.getElementById("energy1_icon").style.display = "none";
+				document.getElementById("energy1_upgrade_txt").innerHTML = "MAXIMUM LEVEL";
+				document.getElementById("buy_upgrade_btn3").style.opacity = 0.5;
+				document.getElementById("buy_upgrade_btn3").style.pointerEvents = "none";
+				CheckUpgrade();
+			}
+		}
+
+		function UpgradeAgriFood() {
+			if (Money >= 550 && agrifoodLevel == 1){
+				Money -= 550;
+				agrifoodLevel = 2;
+				document.getElementById("ex_coins").innerHTML=Money;
+				EPPerSec += 3;
+				document.getElementById("alimentation_upgrade1_txt").innerHTML = "People are eating vegetarian food only";
+				document.getElementById("alimentation1_txt").innerHTML = "All the population replace regular food by insects";
+				document.getElementById("alimentation2_txt").innerHTML = "Earn 15 Eco Points per second";
+				document.getElementById("alimentation1_price").innerHTML = "2500";
+				CheckUpgrade();
+			}
+			else if (Money >= 2500 && agrifoodLevel == 2){
+				Money -= 2500;
+				agrifoodLevel = 3;
+				document.getElementById("ex_coins").innerHTML=Money;
+				EPPerSec += 10;
+				document.getElementById("alimentation_upgrade1_txt").innerHTML = "All the population is eating insect food";
+				document.getElementById("alimentation1_price").style.display = "none";
+				document.getElementById("alimentation1_icon").style.display = "none";
+				document.getElementById("alimentation1_upgrade_txt").innerHTML = "MAXIMUM LEVEL";
+				document.getElementById("buy_upgrade_btn6").style.opacity = 0.5;
+				document.getElementById("buy_upgrade_btn6").style.pointerEvents = "none";
+				CheckUpgrade();
+			}
+		}
+
+		function UpgradeIronworks() {
+			if (Money >= 750 && ironworksLevel == 1){
+				Money -= 750;
+				ironworksLevel = 2;
+				document.getElementById("ex_coins").innerHTML=Money;
+				MoneyPerSec += 4;
+				EPPerSec -= 7;
+				document.getElementById("factories_upgrade1_txt").innerHTML = "Medium Steel Factory is making money despite of the environment";
+				document.getElementById("factory1_txt").innerHTML = "Build a Huge Steel Factory";
+				document.getElementById("factory2_txt").innerHTML = "Earn 30 Coins and Loose 30 Eco Points per second";
+				document.getElementById("factory1_price").innerHTML = "2000";
+				CheckUpgrade();
+			}
+			else if (Money >= 2000 && ironworksLevel == 2){
+				Money -= 2000;
+				ironworksLevel = 3;
+				document.getElementById("ex_coins").innerHTML=Money;
+				MoneyPerSec += 23;
+				EPPerSec -= 20;
+				document.getElementById("factories_upgrade1_txt").innerHTML = "Huge Steel Factory is making money despite of the environment";
+				document.getElementById("factory1_price").style.display = "none";
+				document.getElementById("factory1_icon").style.display = "none";
+				document.getElementById("factory1_upgrade_txt").innerHTML = "MAXIMUM LEVEL";
+				document.getElementById("buy_upgrade_btn8").style.opacity = 0.5;
+				document.getElementById("buy_upgrade_btn8").style.pointerEvents = "none";
+				CheckUpgrade();
+			}
+		}
+
+		function UpgradeBiodiesel() {
+			if (Money >= 2000 && biodieselLevel == 1){
+				Money -= 2000;
+				biodieselLevel = 2;
+				document.getElementById("ex_coins").innerHTML=Money;
+				EPPerSec += 8;
+				MoneyPerSec += 14;
+				document.getElementById("traffic_upgrade2_txt").innerHTML = "New fuel : Bioethanol even more ecological and expensive";
+				document.getElementById("transport3_txt").innerHTML = "The Lab create the best biofuel using algas";
+				document.getElementById("transport4_txt").innerHTML = "Earn 30 Eco Points and 50 Coins per second";
+				document.getElementById("transport2_price").innerHTML = "7000";
+				CheckUpgrade();
+			}
+			else if (Money >= 7000 && biodieselLevel == 2){
+				Money -= 7000;
+				biodieselLevel = 3;
+				document.getElementById("ex_coins").innerHTML=Money;
+				MoneyPerSec += 35;
+				EPPerSec += 20;
+				document.getElementById("traffic_upgrade2_txt").innerHTML = "The Lab has created the an ecological biofuel using algas";
+				document.getElementById("transport2_price").style.display = "none";
+				document.getElementById("transport2_icon").style.display = "none";
+				document.getElementById("transport2_upgrade_txt").innerHTML = "MAXIMUM LEVEL";
+				document.getElementById("buy_upgrade_btn2").style.opacity = 0.5;
+				document.getElementById("buy_upgrade_btn2").style.pointerEvents = "none";
+				CheckUpgrade();
+			}
+		}
+
+		function UpgradeTraffic() {
+			if (Money >= 2500 && trafficLevel == 1){
+				Money -= 2500;
+				trafficLevel = 2;
+				document.getElementById("ex_coins").innerHTML=Money;
+				EPPerSec += 15;
+				document.getElementById("traffic_upgrade1_txt").innerHTML = "100% of the cars of the city are now hybrid cars";
+				document.getElementById("transport1_txt").innerHTML = "100% of the cars of the city are now electric cars";
+				document.getElementById("transport2_txt").innerHTML = "Earn 50 Eco Points per second";
+				document.getElementById("transport1_price").innerHTML = "6000";
+				CheckUpgrade();
+			}
+			else if (Money >= 6000 && trafficLevel == 2){
+				Money -= 6000;
+				trafficLevel = 3;
+				document.getElementById("ex_coins").innerHTML=Money;
+				EPPerSec += 40;
+				document.getElementById("traffic_upgrade1_txt").innerHTML = "100% of the cars of the city are now electric cars";
+				document.getElementById("transport1_price").style.display = "none";
+				document.getElementById("transport1_icon").style.display = "none";
+				document.getElementById("transport1_upgrade_txt").innerHTML = "MAXIMUM LEVEL";
+				document.getElementById("buy_upgrade_btn1").style.opacity = 0.5;
+				document.getElementById("buy_upgrade_btn1").style.pointerEvents = "none";
+				CheckUpgrade();
+			}
+			
+		}
+
+		function UpgradeSolarPanels() {
+			if (Money >= 2000 && SolarpanelsLevel == 1){
+				Money -= 2000;
+				SolarpanelsLevel = 2;
+				document.getElementById("ex_coins").innerHTML=Money;
+				EPPerSec += 9;
+				document.getElementById("energy_upgrade3_txt").innerHTML = "The City is using a Solar Panel Park to generate power";
+				document.getElementById("energy3_txt").innerHTML = "Build a solar farm";
+				document.getElementById("energy4_txt").innerHTML = "Earn 30 Eco Points per second";
+				document.getElementById("energy2_price").innerHTML = "5000";
+				CheckUpgrade();
+			}
+			else if (Money >= 5000 && SolarpanelsLevel == 2){
+				Money -= 5000;
+				SolarpanelsLevel = 3;
+				document.getElementById("ex_coins").innerHTML=Money;
+				EPPerSec += 14;
+				document.getElementById("energy_upgrade3_txt").innerHTML = "The City is using a Solar Panel Farm to generate power";
+				document.getElementById("energy2_price").style.display = "none";
+				document.getElementById("energy2_icon").style.display = "none";
+				document.getElementById("energy2_upgrade_txt").innerHTML = "MAXIMUM LEVEL";
+				document.getElementById("buy_upgrade_btn5").style.opacity = 0.5;
+				document.getElementById("buy_upgrade_btn5").style.pointerEvents = "none";
+				CheckUpgrade();
+			}
+			
+		}
+
+		function UpgradePesticides() {
+			if (Money >= 2500 && pesticideLevel == 1){
+				Money -= 2500;
+				pesticideLevel = 2;
+				document.getElementById("ex_coins").innerHTML=Money;
+				EPPerSec += 13;
+				document.getElementById("alimentation_upgrade2_txt").innerHTML = "Less than 10% of pesticide is used for food production";
+				document.getElementById("alimentation3_txt").innerHTML = "Replace all pesticide by biologic ones";
+				document.getElementById("alimentation4_txt").innerHTML = "Earn 50 Eco Points per second";
+				document.getElementById("alimentation2_price").innerHTML = "5500";
+				CheckUpgrade();
+			}
+			else if (Money >= 5500 && pesticideLevel == 2){
+				Money -= 5500;
+				pesticideLevel = 3;
+				document.getElementById("ex_coins").innerHTML=Money;
+				EPPerSec += 25;
+				document.getElementById("alimentation_upgrade2_txt").innerHTML = "All pesticide are now replaced by biologic ones";
+				document.getElementById("alimentation2_price").style.display = "none";
+				document.getElementById("alimentation2_icon").style.display = "none";
+				document.getElementById("alimentation2_upgrade_txt").innerHTML = "MAXIMUM LEVEL";
+				document.getElementById("buy_upgrade_btn7").style.opacity = 0.5;
+				document.getElementById("buy_upgrade_btn7").style.pointerEvents = "none";
+				CheckUpgrade();
+			}
+			
+		}
+
+		function UpgradeCimentPlant() {
+			if (Money >= 2500 && cimentplantLevel == 1){
+				Money -= 2500;
+				cimentplantLevel = 2;
+				document.getElementById("ex_coins").innerHTML=Money;
+				MoneyPerSec += 20;
+				EPPerSec -= 20;
+				document.getElementById("factories_upgrade2_txt").innerHTML = "Medium Ciment Factory is making money despite of the environment";
+				document.getElementById("factory3_txt").innerHTML = "Build a Huge Ciment Factory";
+				document.getElementById("factory4_txt").innerHTML = "Earn 60 Coins and Loose 50 Eco Points per second";
+				document.getElementById("factory2_price").innerHTML = "5000";
+				CheckUpgrade();
+			}
+			else if (Money >= 5000 && cimentplantLevel == 2){
+				Money -= 5000;
+				cimentplantLevel = 3;
+				document.getElementById("ex_coins").innerHTML=Money;
+				MoneyPerSec += 30;
+				EPPerSec -= 15;
+				document.getElementById("factories_upgrade2_txt").innerHTML = "Huge Ciment Factory is making money despite of the environment";
+				document.getElementById("factory2_price").style.display = "none";
+				document.getElementById("factory2_icon").style.display = "none";
+				document.getElementById("factory2_upgrade_txt").innerHTML = "MAXIMUM LEVEL";
+				document.getElementById("buy_upgrade_btn9").style.opacity = 0.5;
+				document.getElementById("buy_upgrade_btn9").style.pointerEvents = "none";
+				CheckUpgrade();
+			}
+			
+		}
+
+		function UpgradeMine() {
+			if (Money >= 200 && mineLevel == 1){
+				Money -= 200;
+				mineLevel = 2;
+				document.getElementById("ex_coins").innerHTML=Money;
+				MoneyPerClick = 6;
+				document.getElementById("mines_upgrade1_txt").innerHTML = "Mine Ruby";
+				document.getElementById("mine1_txt").innerHTML = "Mining Emerald";
+				document.getElementById("mine2_txt").innerHTML = "Earn 20 per click";
+				document.getElementById("mine1_price").innerHTML = "750";
+				document.getElementById("boutton").style.backgroundColor = "#ff2356";
+				$("#boutton").css("box-shadow", "0px 6px 0px #930e2d");
+				document.getElementById("int_bout_gold").innerHTML = "MINE RUBY";
+				CheckUpgrade();
+			}
+			else if (Money >= 750 && mineLevel == 2){
+				Money -= 750;
+				mineLevel = 3;
+				document.getElementById("ex_coins").innerHTML=Money;
+				MoneyPerClick = 10;
+				document.getElementById("mines_upgrade1_txt").innerHTML = "Mine Emerald";
+				document.getElementById("mine1_txt").innerHTML = "Mining Diamond";
+				document.getElementById("mine2_txt").innerHTML = "Earn 6 0 per click";
+				document.getElementById("mine1_price").innerHTML = "2750";
+				document.getElementById("boutton").style.backgroundColor = "#35ea25";
+				$("#boutton").css("box-shadow", "0px 6px 0px #1e7716");
+				document.getElementById("int_bout_gold").innerHTML = "MINE EMERALD";
+				CheckUpgrade();
+			}
+
+			else if (Money >= 2750 && mineLevel == 3){
+				Money -= 2750;
+				mineLevel = 4;
+				document.getElementById("ex_coins").innerHTML=Money;
+				MoneyPerClick = 30;
+				document.getElementById("mines_upgrade1_txt").innerHTML = "Mine Diamond";
+				document.getElementById("mine1_price").style.display = "none";
+				document.getElementById("mine1_icon").style.display = "none";
+				document.getElementById("mine1_upgrade_txt").innerHTML = "MAXIMUM LEVEL";
+				document.getElementById("buy_upgrade_btn10").style.opacity = 0.5;
+				document.getElementById("buy_upgrade_btn10").style.pointerEvents = "none";
+				document.getElementById("boutton").style.backgroundColor = "#edfbfc";
+				$("#boutton").css("box-shadow", "0px 6px 0px #525f60");
+				document.getElementById("int_bout_gold").innerHTML = "MINE DIAMOND";
+				CheckUpgrade();
+			}
+			
+		}
+
+	</script>
+	</html>

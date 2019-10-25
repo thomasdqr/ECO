@@ -1,0 +1,827 @@
+@font-face
+{
+    font-family: 'eco';
+    src : url("Roboto-Thin.ttf");
+}
+@font-face
+{
+    font-family: 'eco_light';
+    src : url("Roboto-Light.ttf");
+}
+body
+{
+    background-image: url("fond_vert.jpg");
+    -webkit-user-select: none; /* Chrome/Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+
+    /* Rules below not implemented in browsers yet */
+    -o-user-select: none;
+    user-select: none;
+    overflow: hidden;
+}
+
+:focus{
+    outline: 0;
+}
+
+#titre
+{
+    color: white;
+    width: 100%;
+    text-align: center;
+    font-family: 'eco';
+}
+#trait
+{
+    background-color: white;
+    height: 0.2vh;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+#menu
+{
+    border: 0.2vh white solid;
+    border-radius: 15px;
+    margin-top: 5%;
+    height: 68vh;
+    width: 22vw;
+    margin-left: 3%; 
+    float: left;
+    overflow-y: hidden;
+}
+#eco_point
+{
+    background-color: white;
+    border-radius: 15px;
+    margin-top: 5%;
+    height: 7vh;
+    width: 9vw;
+    margin-left: 45vw;
+}
+#image_feuille
+{
+    width: 3vh;
+    margin: 5%;
+    margin-left: 10%;
+    float: left;
+}
+#eco_point_chiffre
+{
+    font-family: 'eco_light';
+    color:  #78be37;
+    margin-top: 1.6vh;
+    margin-left: 3vw;
+    height: 4vh;
+    width: 5vw;
+    text-align: center;
+    position: absolute;
+    /*padding-left: 40%;
+    padding-top: 8.5%;
+    font-size: 4vh;*/
+}
+#level
+{
+    color: white;
+    font-family: 'eco';
+    margin-left: 39.5vw;
+    font-size:4vh;
+    margin-top: 1%;
+}
+
+#upgrade_level_btn
+{
+    opacity: 0.5;
+    pointer-events: none;
+    background-color: white;
+    height: 6vh;
+    width: 8vw;
+    position: absolute;
+    top: 63.5vh;
+    left: 46vw;
+    border-radius: 2vh;
+    cursor: pointer;
+}
+
+#upgrade_level_txt
+{
+    font-family: 'eco_light';
+    color: #78be37;
+    text-align: center;
+    display: block;
+    margin-top: 0.5vh;
+    font-size: 2vh;
+    pointer-events: none;
+}
+
+#logo_leef
+{
+    width: 1.5vh;
+    margin-left: 2vw;
+    pointer-events: none;
+}
+
+#upgrade_level_value
+{
+    font-family: 'eco_light';
+    color: #78be37;
+    text-align: center;
+    display: block;
+    margin-top: -2.6vh;
+}
+
+
+#plante
+{
+    position: absolute;
+    margin-top: -5vh;
+    left: 43.25vw;
+    width: 13.5vw;
+}
+#cadre_gold
+{
+    position: absolute;
+    background-color: #303030;
+    height: 16vh;
+    width: 14vw;
+    margin-left: 42.6vw;
+    border-radius: 15px;
+    top: 71vh;
+}
+#img_coins
+{
+    width: 4vh;
+    margin-left: 20%;
+    margin-top: 9%;
+    float: left;
+}
+#ex_coins
+{
+    color: #ffd700;
+    font-family: 'eco_light';
+    /*padding-top: 7%;
+    padding-left: 45%;
+    font-size: 4.5vh;*/
+    margin-top: 2vh;
+    margin-left: 5vw;
+    width: 6vw;
+    height: 4.5vh;
+    text-align: center;
+    position: absolute;
+    /*background-color: red;*/
+
+}
+#boutton
+{
+    position: absolute;
+    background-color: #ffd700;
+    /*padding: 20px 70px;*/
+    border-radius: 15px;
+    height: 7vh;
+    width: 10vw;
+    margin-top: 7vh;
+    margin-left: 2vw;
+    box-shadow: 0px 6px 0px #8e7229;
+    transition-duration: 0.1s;
+
+    cursor:pointer;
+}
+
+#boutton:active
+{
+    position: absolute;
+    margin-top: 8vh;
+    box-shadow: 0px 0px 0px;
+    transition-duration: 0.1s;
+}
+
+#int_bout_gold
+{
+    color: black;
+    font-family: 'eco';
+    font-size: 2.3vh;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+
+    -webkit-user-select: none; /* Chrome/Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+
+    /* Rules below not implemented in browsers yet */
+    -o-user-select: none;
+    user-select: none;
+
+    cursor:pointer;
+}
+#shop
+{
+    font-family: 'eco';
+    color: white;
+    text-align: center;
+    font-size:4vh;
+}
+#sur_shop
+{
+    background-color: white;
+    height: 1px;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: -6%
+}
+.icone_1
+{
+    height: 8vh;
+    width: 20vw;
+    background-color: white;
+    margin-top:5%;
+    margin-left: 4%;
+    border-radius: 15px;
+    float: left;
+    cursor: pointer;
+}
+.cadre_gold_shop
+{
+    background-color: #303030;
+    height: 3vh;
+    width: 4vw;
+    margin-left: 75%;
+    margin-top: -18%;
+    border-radius: 7px;
+    cursor: pointer;
+
+}
+
+.cadre_gold_shop:active
+{
+    background-color: #707070;
+
+}
+
+#img_coins_shop
+{
+    width: 1.5vh;
+    margin-left: 10%;
+    margin-top: 10%;
+    float: left;
+}
+#ex_coins_shop
+{
+    color: #ffd700;
+    font-family: 'eco_light';
+    width: 100%;
+    padding-top: 0.2vh;
+    text-align: center;
+}
+#traffic
+{
+    font-family: 'eco';
+    margin-top: 0.5vh;
+    margin-bottom: 1vh; 
+    margin-left: 5%;    
+    color: #78be37;
+}
+#traffic_grise
+{
+    font-size:1.5vh;
+    margin-top: 1vh;
+    margin-left: 1vw; 
+    color: #303030;
+    font-family: 'eco';
+}
+
+#new_struc_div
+{
+    display: block;
+    margin-top: 5vh;
+    width: 18vw;
+    height: 5vh;
+    float: left;
+    margin-left: 2vw;
+    text-align: center;
+    font-family: 'eco';
+    color: white;
+    font-size: 2.5vh;
+}
+#onglet_1
+{
+    background-color: rgba(82,144,251, 1);
+    bottom: 0;
+    width: 16vw;
+    max-height: 5%;
+    border-radius: 10px 10px 0px 0px;
+    position: absolute;
+    margin-left: 2.9vw;
+    transition-duration: 1s;
+
+    
+}
+
+#onglet_1:hover
+{
+    max-height: 100vh;
+    transition-duration: 2s;
+}   
+
+
+#onglet_2
+{
+    background-color: rgba(48, 175, 36, 1);
+    bottom: 0%;
+    width: 16vw;
+    border-radius: 10px 10px 0px 0px;
+    position: absolute;
+    margin-left: 22.3vw;
+    transition-duration: 1s;
+    max-height: 5%;
+}
+
+#onglet_2:hover
+{
+    max-height: 100vh;
+    transition-duration: 2s;
+}   
+
+#onglet_3
+{
+    background-color: rgba(251,90,82, 1);
+    bottom: 0%;
+    width: 16vw;
+    border-radius: 10px 10px 0px 0px;
+    position: absolute;
+    margin-left: 41.6vw;
+    transition-duration: 1s;
+    max-height: 5%;
+}
+
+#onglet_3:hover
+{
+    max-height: 100vh;
+    transition-duration: 2s;
+}   
+
+#onglet_4
+{
+    z-index: 50;
+    background-color: rgba(22,22,22, 1);
+    bottom: 0%;
+    width: 16vw;
+    border-radius: 10px 10px 0px 0px;
+    position: absolute;
+    margin-left: 61vw;
+    transition-duration: 1s;
+    max-height: 5%;
+}
+
+#onglet_4:hover
+{
+    max-height: 100vh;
+    transition-duration: 2s;
+}
+
+#onglet_5
+{
+    background-color: rgba(255,196,95, 1);
+    bottom: 0%;
+    width: 16vw;
+    border-radius: 10px 10px 0px 0px;
+    position: absolute;
+    margin-left: 80.5vw;
+    transition-duration: 1s;
+    max-height: 5%;
+}
+
+#onglet_5:hover
+{
+    max-height: 100vh;
+    transition-duration: 2s;
+}
+
+#nom_onglet
+{
+    margin-top: 1vh;
+    text-align: center;
+    color: white;
+    font-family: 'eco';
+    pointer-events: none;
+}
+
+.traffic_upgrade_txt
+{
+    font-family: 'eco';
+    color: white;
+    width: 13vw;
+    height: 5vh;
+    margin-left: 1.5vw;
+    font-size: 0.85vw;
+    display: block;
+    text-align: center;
+}
+.traffic_upgrade
+{
+    height: 12vh;
+}
+
+.buy_upgrade_btn
+{
+    background-color: #292929;
+    height: 5vh;
+    width: 12vw;
+    display: block;
+    margin-left: 2vw;
+    border-radius: 2vh;
+    cursor: pointer;
+}
+
+.buy_upgrade_txt
+{
+    position: absolute;
+    font-family: 'eco';
+    font-size: 2vh;
+    color: white;
+    margin-top: 1.4vh;
+    margin-left: 1.6vw;
+    pointer-events: none;
+}
+
+.buy_upgrade_icon
+{
+    width: 2vh;
+    height: 2vh;
+    margin-top: 1.5vh;
+    margin-left: 7vw;
+    pointer-events: none;
+}
+
+.buy_upgrade_price
+{
+    position: absolute;
+    font-family: 'eco';
+    font-size: 2vh;
+    color: #ffd700;
+    margin-top: 1.4vh;
+    margin-left: 0.3vw;
+    pointer-events: none;
+}
+
+.info_div
+{
+    background-color: black;
+    color: #78be37;
+    position: absolute;
+    margin-top: -17vh;
+    width: 20vw;
+    height: 15vh;
+    text-align: center;
+    font-family: 'eco_light'; 
+    opacity: 0;
+    pointer-events: none;
+    transition-duration: 0.4s;
+}
+
+.infos_txt2
+{
+    font-family: 'eco';
+    position: absolute;
+    margin-top: 1vh;
+    left: 0.5vw;
+    width: 19vw;
+    color: white;
+    font-size: 1.8vh;
+}
+
+.infos_txt3
+{
+    position: absolute;
+    margin-top: 4vh;
+    font-size: 1.8vh;
+    width: 100%;
+    height: 5%;
+    left: 0;
+}
+
+.info_upgrade
+{
+    z-index: 100;
+    background-color: black;
+    color: rgba(82,144,251, 1);
+    position: absolute;
+    margin-top: -18vh;
+    margin-left: -4vw;
+    width: 20vw;
+    height: 15vh;
+    text-align: center;
+    font-family: 'eco_light'; 
+    opacity: 0;
+    pointer-events: none;
+    transition-duration: 0.4s;
+}
+
+#triangle
+{
+    margin-left: 8vw;
+    margin-top: 9vh;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 2vh 2vw 0 2vw;
+    border-color: black transparent transparent transparent;
+}
+
+.scrollbar {
+    background-color: rgba(255,255,255,0);
+    float: left;
+    height: 50vh;
+    width: 21.5vw;
+    margin-left: 0%;
+    margin-top: 15%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+#style-1::-webkit-scrollbar {
+    width: 6px;
+    border-radius: 15px;
+    box-shadow: 0px 6px 0px #8e7229;
+    border-radius: 40px;
+} 
+#style-1::-webkit-scrollbar-thumb {
+    background-color: #78be37;
+    border-radius: 40px;
+}
+#style-1::-webkit-scrollbar-button {
+    color: white;
+    border-radius: 40px;
+}
+#style-1::-webkit-scrollbar-track-piece {
+    background-color: white;
+    border-radius: 40px;
+    }
+
+
+.mySlides
+{
+    z-index: -2;
+    height: 20vh;
+    width: 21.5vw;
+    background-color: white;
+    bottom: 6vw;
+    right: 3vw;
+    position: absolute;
+    border-radius: 20px;
+    box-shadow: 2px 2px 10px rgba(0,0,0, 0.6);
+}
+.w3-display-left
+{
+    z-index: 100;
+    position: absolute;
+    bottom: 19vh;
+    right: 22.5vw;
+    background-color: white;
+    border-radius: 15px;
+    border: none;
+    color: #78be37;
+    opacity: 0.9;
+}
+.w3-display-right
+{
+    position: absolute;
+    bottom: 19vh;
+    right: 4vw;
+    background-color: white;
+    border-radius: 15px;
+    border: none;
+    color: #78be37;
+    opacity: 0.9;
+}
+#titre_info
+{
+    color: #78be37;
+    font-family: 'eco_light';
+    width: 100%;
+    text-align: center;
+    margin-top: 2%;
+}
+
+#underline
+{
+    background-color: #78be37;
+    width: 100%;
+    height: 0.05vw;
+    margin-top: -4%;
+}
+
+#texte
+{
+    pointer-events: none;
+    color: #303030;
+    font-family: 'eco';
+    width: 16.5vw;
+    margin-left: 2.5vw;
+    font-size: 1.8vh;
+    text-align:center; 
+    position: absolute;
+}
+
+#score_panel
+{
+    position: absolute;
+    top: 15vh;
+    left: 78vw;
+    width: 18vw;
+    height: 45vh;
+    border: 2px solid white;
+    background-color: transparent;
+    border-radius: 5vh;
+}
+
+#scoreTitle
+{
+    position: absolute;
+    font-family: 'eco_light';
+    font-size: 3vh;
+    color: white;
+    width: 18vw;
+    text-align: center;
+}
+
+#space
+{
+    width: 18vw;
+    height: 5vh;
+}
+
+#player_score
+{
+    background-color: white;
+    height: 3vh;
+    width: 16vw;
+    margin-left: 1vw;
+    border-radius: 2vh;
+    margin-bottom: 1vh;
+    text-align: center;
+    font-family: 'eco_light';
+    color: #78be37;
+}
+
+
+#up
+{
+    width:100vw; /*largeur */
+    height:100vh; /*hauteur*/   
+    position: absolute;
+    left: 0%;
+    top: -45%;
+    background-image: url("home_bckground.jpg");
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+    z-index: 200;
+}
+#down
+{
+    width:100vw; /*largeur */
+    height:45vh; /*hauteur*/    
+    position: absolute;
+    left: 0%;
+    top: 55%;
+    background-color: #78be37;
+    z-index: 160;
+}
+#text_box
+{
+    width: 18vw;
+    height: 6vh;
+    position: absolute;
+    z-index: 100;
+    top: 72%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    left: 41vw;
+    background-color: rgba(0,0,0,0);
+    color: white;
+    font-family: 'eco';
+    font-size: 5vh;
+    text-align: center;
+}
+#titre1
+{
+    font-family: 'eco_light';
+    color: white;
+    top: 44%;
+    left: 48.3vw;
+    position: absolute;
+    z-index: 300;
+    font-size: 3vh;
+}
+#fond_titre
+{
+    position: absolute;
+    z-index: 3;
+    background-color: white;
+    opacity: 0.6;
+    top: 32vh;
+    left: 42.2vw;
+    width: 15vw;
+    height: 20vh;
+    border-radius: 0% 0% 1000% 1000%;
+}
+input::placeholder
+{
+    color: white;
+    font-style: italic;
+    font-family: 'eco';
+    font-size: 2vw;
+    text-align: center;
+}
+#boutton1
+{
+    cursor: pointer;
+    height:6vh; 
+    width:14vw;
+    top: 38vh;
+    left: 43vw;
+    background-color: white;
+    position: absolute;
+    border-radius: 10vh;
+    z-index: 300;
+    transition-duration: 0.6s;
+}
+#boutton1:hover
+{
+    cursor: pointer;
+    height:8vh; 
+    width:16vw;
+    top: 37vh;
+    left: 42vw;
+    background-color: white;
+    position: absolute;
+    border-radius: 10vh;
+    z-index: 300;
+    transition-duration: 0.6s;
+}
+
+#titre_boutton
+{
+    pointer-events: none;
+    color: #78be37;
+    font-size: 3vh; 
+    font-family: 'eco';
+    text-align: center;
+    position: absolute;
+    width: 100vw;
+    top: 36.4vh;
+    left: 0vw;
+    z-index: 301;
+}
+#texte_1
+{
+    margin-top: 8vh;
+    color: white;
+    font-family: 'eco';
+    text-align: center;
+    font-size: 4vh;
+    z-index: 300;
+}
+#surlign
+{
+    background-color: white;
+    height: 0.2vh;
+    width: 16vw;
+    left: 42.8vw;
+    top: 15.5vh;
+    position: absolute;
+    z-index: 300;
+}
+#texte_2
+{
+    color: white;
+    text-align: center;
+    font-family: 'eco';
+    font-size: 2.5vh;
+}
+#texte_3
+{
+    color: white;
+    text-align: center;
+    font-family: 'eco';
+    font-size: 2.5vh;
+}
+#texte_4
+{
+    color: white;
+    text-align: center;
+    font-family: 'eco';
+    bottom: 5vh;
+    font-size: 2.5vh;
+}
+#cadre_text
+{
+    margin-top: 5vh;
+    padding-top: 1vh;
+}
+
+#home_div
+{
+    opacity: 1;
+    transition-duration: 1s;
+}
